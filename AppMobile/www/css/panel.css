@@ -1,0 +1,18 @@
+.nav-wrapper .brand-logo img {
+    height: 52px;
+}
+
+.nav-wrapper {
+    background-color: lightslategray;
+}
+
+.range-field
+{
+    height: 80px;
+}
+
+.info
+{
+    color: black;
+    font-size: 32px;
+}

@@ -1,0 +1,16 @@
+@media screen and (orientation:landscape) {
+    #logo {
+        display: none;
+    }
+}
+
+@media screen and (orientation:portrait) {
+    #logo_small {
+        display: none;
+    }
+}
+
+#error
+{
+    color: red;
+}
