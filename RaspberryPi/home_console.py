@@ -15,7 +15,7 @@ api_websocket_url = "ws://api.unisvertcite.ovh:8080/"
 pin_elec = 5
 pin_water = 6
 pid_file_path = "/run/home_console.pid"
-device_id = "58ae18d9-222f-11e8-a4e8-78929c4cab12"
+device_id = ""
 
 # Initialisation des variables
 water = 0
