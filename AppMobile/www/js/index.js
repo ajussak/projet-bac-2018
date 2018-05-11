@@ -17,22 +17,24 @@ $('#action').click(function () {
     var email = $('#login').val();
     var pass = $('#password').val();
 
-    $.ajax(
-        {
-            url: getURLBase() + '/login',
-            method: 'post',
-            data: {'id': email, 'password': pass, 'client_id': client_id},
-            success: function (result, statut) {
-                window.localStorage.setItem('token', result['token']);
-                window.location = 'panel.html';
-            },
-            error: function (result, statut) {
-                if (result['status'] == 403) {
-                    $("#error").html('Identifiants invalides.');
-                }
-                else {
-                    $("#error").html('Une erreur est survenue.');
-                }
+    $.ajax({
+        url: getURLBase() + '/login',
+        method:'post',
+        headers: {
+            'Authorization': 'Basic ' + btoa(email + ':' + pass)
+        },
+        data: {'client_id': client_id},
+        success: function (result, statut) {
+            window.localStorage.setItem('token', result['token']);
+            window.location = 'panel.html';
+        },
+        error: function (result, statut) {
+            if (result['status'] == 401) {
+                $("#error").html('Identifiants invalides.');
             }
-        });
+            else {
+                $("#error").html('Une erreur est survenue.');
+            }
+        }
+    });
 });

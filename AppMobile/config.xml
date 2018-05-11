@@ -6,6 +6,12 @@
     <author email="adrien.jussak@lasalle-troyes.fr" href="http://cordova.io">
         Adrien Jussak
     </author>
+    <platform name="android">
+        <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
+    </platform>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

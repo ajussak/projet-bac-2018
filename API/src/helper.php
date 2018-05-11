@@ -1,20 +1,28 @@
 <?php
 
 
-function get_number_from_token(\PDO $db, string $token)
+function get_appartment_number(\PDO $db, \Slim\Http\Request $request)
 {
-    $request = $db->prepare("SELECT apartment FROM users WHERE email = (SELECT user_email FROM tokens WHERE token = :token);");
-    $request->bindParam("token", $token);
-    $request->execute();
-    return $request->fetch()['apartment'];
-}
+    $auth = $request->getHeaderLine('Authorization');
+    if($auth != null)
+    {
+        $data = explode(' ', $auth);
 
-function get_number_from_deviceid(\PDO $db, string $id)
-{
-    $req = $db->prepare('SELECT apartment FROM devices WHERE id=:id');
-    $req->bindParam('id', $id);
-    $req->execute();
-    return $req->fetch()['apartment'];
+        if(count($data) >= 2) {
+            if ($data[0] == 'Bearer') {
+                $req = $db->prepare("SELECT apartment FROM users WHERE email = (SELECT user_email FROM tokens WHERE token = :token);");
+                $req->bindParam("token", $data[1]);
+                $req->execute();
+                return $req->fetch()['apartment'];
+            } else if ($data[0] == 'Device') {
+                $req = $db->prepare("SELECT apartment FROM devices WHERE id = :id");
+                $req->bindParam("id", $data[1]);
+                $req->execute();
+                return $req->fetch()['apartment'];
+            }
+        }
+    }
+    return null;
 }
 
 function is_admin(\PDO $db, string $token): bool

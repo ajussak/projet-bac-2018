@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Security-Policy"
-          content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport"
@@ -19,31 +18,53 @@
         <div class="nav-wrapper">
             <a class="brand-logo center"><img src="img/logo_small.png"/></a>
             <ul class="left">
-                <li><a id="disconnect"><i class="material-icons">exit_to_app </i></a></li>
+                <li><a id="disconnect" class="waves-effect waves-light"><i class="material-icons">exit_to_app</i></a>
+                </li>
+            </ul>
+            <ul class="right">
+                <a id="refresh" class="waves-effect waves-light"><i class="material-icons">refresh</i></a>
             </ul>
         </div>
     </nav>
     <div class="container">
 
         <div class="row">
-            <h5 class="center light">Relevés énergétiques</h5>
-        </div>
-
-        <div class="row">
-            <div class="col s6 center">
-                <a>Révelé électrique (30 derniers jours)</a><br />
-                <a id="electricity" class="info">120 kWh</a>
-            </div>
-            <div class="col s6 center">
-                <a>Révelé d'eau (30 derniers jours)</a><br />
-                <a id="water" class="info">120 m³</a>
+            <div class="col s12 center" id="profile">
+                <p>
+                    <a id="resident">...</a><br />
+                    <a id="apartment">Appartement ...</a>
+                </p>
             </div>
         </div>
 
+        <div class="row s12 center">
+            <h5 class="light">Relevés énergétiques</h5>
+            <p>Des 30 derniers jours</p>
+        </div>
+
         <div class="row">
-            <div class="col l6 offset-l3 s10 offset-s1 center">
-                <h5 class="light">Température de consigne :</h5>
-                <a id="temp" class="info"/></a>
+            <div class="col s6 m3 offset-m3">
+                    <p class="energy center">
+                        <a>Électricité</a><br />
+                        <i class="material-icons" id="elec-icon">flash_on</i><br/>
+                        <a id="electricity" class="info">... kWh</a><br />
+                        <a id="electricity-raw">(... Wh)</a>
+                    </p>
+            </div>
+            <div class="col s6 m3">
+                    <p class="energy center">
+                        <a>Eau</a><br />
+                        <i class="material-icons" id="water-icon">invert_colors</i><br/>
+                        <a id="water" class="info">... m³</a><br />
+                        <a id="water-raw">(... L)</a>
+                    </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 center">
+                <h5 class="light">Chauffage (Température de consigne)</h5>
+                <a id="temp" class="info"/>... °C</a>
             </div>
             <div class="col s10 offset-s1">
                 <form action="#">
