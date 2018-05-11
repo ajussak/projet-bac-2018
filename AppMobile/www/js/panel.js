@@ -25,6 +25,7 @@ function updateData() {
     $.ajax({
         url: getURLBase() + '/meters',
         success: function (msg) {
+<<<<<<< HEAD
 
             var elec = parseInt(msg[0]['elec']);
             var water = parseInt(msg[0]['water']);
@@ -34,6 +35,10 @@ function updateData() {
 
             $('#electricity-raw').html('(' + elec + ' Wh)');
             $('#water-raw').html('(' + water + ' L)');
+=======
+            $('#electricity').html(msg[0]['elec'] + ' kWh');
+            $('#water').html(msg[0]['water'] + ' m³');
+>>>>>>> 972195dfebaf951530221ee61fcfd31115ec7090
         }
     });
 
@@ -44,7 +49,11 @@ function updateData() {
             var gender = msg[0]['gender'] ? 'M. ' : 'Mme. ';
             $('#resident').html(gender + msg[0]['lastname'].toUpperCase() + ' ' + msg[0]['firstname']);
         }
+<<<<<<< HEAD
     });
+=======
+    })
+>>>>>>> 972195dfebaf951530221ee61fcfd31115ec7090
 }
 
 $('#disconnect').click(function () {
